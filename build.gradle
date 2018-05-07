@@ -1,0 +1,33 @@
+subprojects {
+    ext.kotlin_version = '1.2.41'
+
+    ext.swaggerVersion = "2.9.0"
+    ext.mapstructVersion = '1.2.0.Final'
+    buildscript {
+        repositories {
+            mavenCentral()
+            jcenter()
+            maven {
+                url "https://dl.bintray.com/kotlin/kotlin-eap"
+            }
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+        dependencies {
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+            classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
+            classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+            classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.30"
+            classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE"
+        }
+    }
+
+    apply plugin: 'idea'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}

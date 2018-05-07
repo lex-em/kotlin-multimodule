@@ -1,0 +1,8 @@
+build/
+node_modules/
+kotlin_build/
+.gradle/
+.idea/
+*.iml
+*.log
+package-lock.json

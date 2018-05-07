@@ -1,0 +1,10 @@
+apply plugin: 'kotlin-platform-jvm'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.google.code.findbugs:jsr305:3.0.2'
+    expectedBy project(":web")
+    testCompile "junit:junit:4.12"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+}

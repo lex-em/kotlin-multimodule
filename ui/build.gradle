@@ -1,0 +1,38 @@
+version '0.1.0-SNAPSHOT'
+
+apply plugin: 'kotlin2js'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.moduleKind = 'commonjs'
+    kotlinOptions.main = "call"
+}
+
+task copyResources(type: Copy) {
+    from 'build/resources/main'
+    into 'build/bundle'
+}
+
+build.dependsOn copyResources
+run.dependsOn copyResources
+
+kotlinFrontend {
+    sourceMaps = true
+    npm {
+        dependency ("uuid", "^3.2.1")
+    }
+    webpackBundle {
+        bundleName = "main"
+        sourceMapEnabled = true
+        contentPath = file("$buildDir/bundle")
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile project(":web-js")
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
+}

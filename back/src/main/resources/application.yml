@@ -1,0 +1,40 @@
+endpoints:
+  info:
+    enabled: true
+  health:
+    enabled: true
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 86400
+spring:
+  application:
+    name: back
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:file:./db/multiplatform;MV_STORE=TRUE;MVCC=TRUE
+#    url: jdbc:h2:file:./db/multiplatform;MV_STORE=TRUE;MVCC=TRUE;PASSWORD_HASH=TRUE
+    username: multiplatform
+    password: multiplatform
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 512mb
+      max-request-size: 512mb
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-documentation
+documentation:
+  api:
+    version: ${version}

@@ -1,0 +1,9 @@
+{
+  "name": "web-js",
+  "version": "0.0.1",
+  "main": "./web-js.js",
+  "dependencies": {
+    "kotlin": "^1.2.40",
+    "uuid": "^3.2.1"
+  }
+}

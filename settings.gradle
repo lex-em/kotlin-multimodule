@@ -1,0 +1,8 @@
+rootProject.name = 'kotlin-multimodule'
+
+include 'web'
+include 'web-jvm'
+include 'web-js'
+include 'ui'
+include 'back'
+
